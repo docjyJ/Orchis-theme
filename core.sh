@@ -53,7 +53,7 @@ install() {
     local else_icon_light="$icon_color"
   fi
 
-  local THEME_DIR="${1}/${2}${3}${4}${5}${6}"
+  local THEME_DIR="${1}/${2}${3}${5}${6}${ELSE_DARK}"
 
   [[ -d "$THEME_DIR" ]] && rm -rf "$THEME_DIR"
 
@@ -66,13 +66,13 @@ install() {
 
   echo "[Desktop Entry]" >>                                                     "$THEME_DIR/index.theme"
   echo "Type=X-GNOME-Metatheme" >>                                              "$THEME_DIR/index.theme"
-  echo "Name=${2}${3}${4}${5}${6}" >>                                           "$THEME_DIR/index.theme"
+  echo "Name=${2}${3}${5}${6}${ELSE_DARK}" >>                                   "$THEME_DIR/index.theme"
   echo "Comment=An flat Materia Gtk+ theme based on Elegant Design" >>          "$THEME_DIR/index.theme"
   echo "Encoding=UTF-8" >>                                                      "$THEME_DIR/index.theme"
   echo "" >>                                                                    "$THEME_DIR/index.theme"
   echo "[X-GNOME-Metatheme]" >>                                                 "$THEME_DIR/index.theme"
-  echo "GtkTheme=${2}${3}${4}${5}${6}" >>                                       "$THEME_DIR/index.theme"
-  echo "MetacityTheme=${2}${3}${4}${5}${6}" >>                                  "$THEME_DIR/index.theme"
+  echo "GtkTheme=${2}${3}${5}${6}${ELSE_DARK}" >>                               "$THEME_DIR/index.theme"
+  echo "MetacityTheme=${2}${3}${5}${6}${ELSE_DARK}" >>                          "$THEME_DIR/index.theme"
   echo "IconTheme=Tela-circle${else_icon_dark:-}" >>                            "$THEME_DIR/index.theme"
   echo "CursorTheme=Vimix${else_icon_dark:-}" >>                                "$THEME_DIR/index.theme"
   echo "ButtonLayout=close,minimize,maximize:menu" >>                           "$THEME_DIR/index.theme"
@@ -81,7 +81,7 @@ install() {
   cp -r "$SRC_DIR/gnome-shell/pad-osd.css"                                      "$THEME_DIR/gnome-shell"
 
   if [[ "$tweaks" == 'true' ]]; then
-    sassc $SASSC_OPT "$SRC_DIR/gnome-shell/shell-$GS_VERSION/gnome-shell${ELSE_DARK:-}$size.scss" "$THEME_DIR/gnome-shell/gnome-shell.css"
+    sassc $SASSC_OPT "$SRC_DIR/gnome-shell/shell-$GS_VERSION/gnome-shell$color$size.scss" "$THEME_DIR/gnome-shell/gnome-shell.css"
   else
     cp -r "$SRC_DIR/gnome-shell/shell-$GS_VERSION/gnome-shell${ELSE_DARK:-}$size.css" "$THEME_DIR/gnome-shell/gnome-shell.css"
   fi
@@ -159,7 +159,7 @@ install() {
   fi
 
   if [[ "$tweaks" == 'true' ]]; then
-    sassc $SASSC_OPT "$SRC_DIR/cinnamon/cinnamon${ELSE_DARK:-}$size.scss"       "$THEME_DIR/cinnamon/cinnamon.css"
+    sassc $SASSC_OPT "$SRC_DIR/cinnamon/cinnamon$color$size.scss"       "$THEME_DIR/cinnamon/cinnamon.css"
   else
     cp -r "$SRC_DIR/cinnamon/cinnamon${ELSE_DARK:-}$size.css"                   "$THEME_DIR/cinnamon/cinnamon.css"
   fi

@@ -1175,7 +1175,7 @@ $submenu_item_radius: $popup-radius - $space-size;
     border-radius: 0;
     height: $medium-size - 2px;
   } @else {
-    margin: $space-size / 2;
+    margin: $space-size * 2;
     border-radius: $circular-radius;
     height: $medium-size + 2px;
   }

@@ -24,7 +24,7 @@ $panel_button_hpadding: ($panel_height - $base-icon-size) / 2;
     margin: 0;
     border-radius: 0;
   } @else {
-    margin: $space-size / 2;
+    margin: $space-size * 2;
     border-radius: if($corner_style == 'circular', $circular-radius, $material-radius + $space-size / 2);
   }
 
